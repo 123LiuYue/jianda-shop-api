@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.content.mapper.ContentMapper">
+<resultMap id="findAll" type="com.example.content.entity.Content">
+    <id column="contentId" property="contentId" jdbcType="VARCHAR"/>
+    <result column="img" property="img" jdbcType="VARCHAR"/>
+    <result column="content" property="content" jdbcType="VARCHAR"/>
+    <result column="titleId" property="titleId" jdbcType="VARCHAR"/>
+</resultMap>
+
+
+<!--查询所有-->
+<select id="findAll" resultMap="findAll">
+        select * from content;
+</select>
+<!--根据外键id查询-->
+    <select id="findByIdAll" resultMap="findAll">
+         select * from content where titleId=#{titleId};
+    </select>
+
+</mapper>

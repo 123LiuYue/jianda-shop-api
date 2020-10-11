@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.title.mapper.TitleMapper">
+<resultMap id="findAll" type="com.example.title.entity.Title">
+    <id column="titleId" property="titleId" jdbcType="VARCHAR"/>
+    <result column="titleName" property="titleName" jdbcType="VARCHAR"/>
+    <result column="contentId" property="contentId" jdbcType="VARCHAR"/>
+    <!--collection定义关联集合类型的属性的封装规则 ofType:指定集合里面元素的类型-->
+    <collection property="contentList" ofType="com.example.content.entity.Content">
+        <id column="contentId" property="contentId" />
+        <result column="img" property="img" />
+        <result column="content" property="content" />
+    </collection>
+
+</resultMap>
+
+
+
+<!--查询所有-->
+<select id="findAll" resultMap="findAll">
+        select * from title;
+    </select>
+    <!--连表查询-->
+   <select id="connectAll" resultMap="findAll">
+       select t.titleId,c.titleId,c.contentId,c.img,c.content from title t,content c
+        where t.titleId = c.titleId;
+    </select>
+
+</mapper>

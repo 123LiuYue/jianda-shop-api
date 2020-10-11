@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.picture.mapper.PictureMapper">
+    <resultMap id="findAll" type="com.example.picture.entity.Picture">
+        <id column="picturId" property="picturId" jdbcType="VARCHAR"/>
+        <result column="picturSite" property="picturSite" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!--查询所有-->
+    <select id="findAll" resultMap="findAll">
+        select * from picture;
+    </select>
+    <!--根据id查询-->
+    <!--<select id="findById" resultMap="findAll">
+        select * from t_user where userId=#{userId};
+    </select>-->
+
+    <!-- 删除  -->
+    <!--<delete id="deleteUser" >
+        delete from t_user where userId = #{userId};
+    </delete>-->
+
+    <!-- 添加-->
+   <!-- <insert id="insertUser">
+        insert into t_user (userId,userName,gender,phone,age,password) values  (#{userId},#{userName},#{gender},#{phone},#{age},#{password});
+    </insert>-->
+
+    <!--修改-->
+    <!--<update id="updateUser" >
+        update t_user set userName=#{userName},gender=#{gender},phone=#{phone},age=#{age},password=#{password} where userId = #{userId};
+    </update>-->
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.detailTake.mapper.DetailTakeMapper">
+<resultMap id="findAll" type="com.example.detailTake.entity.DetailTake">
+    <id column="detailsTakeId" property="detailsTakeId" jdbcType="VARCHAR"/>
+    <result column="img1" property="img1" jdbcType="VARCHAR"/>
+    <result column="commodityId" property="commodityId" jdbcType="VARCHAR"/>
+</resultMap>
+
+
+<!--根据外键id查询-->
+    <select id="findByIdAll" resultMap="findAll">
+         select * from detailsTake where commodityId=#{commodityId};
+    </select>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.consultant.mapper.ConsultAntMapper">
+<resultMap id="findAll" type="com.example.consultant.entity.ConsultAnt">
+    <id column="consultantId" property="consultantId" jdbcType="VARCHAR"/>
+    <result column="headline" property="headline" jdbcType="VARCHAR"/>
+    <result column="time" property="time" jdbcType="TIMESTAMP"/>
+    <result column="browse" property="browse" jdbcType="VARCHAR"/>
+    <result column="details" property="details" jdbcType="VARCHAR"/>
+    <result column="consultId" property="consultId" jdbcType="VARCHAR"/>
+</resultMap>
+
+
+<!--查询所有-->
+<select id="findALl" resultMap="findAll">
+        select * from consultant;
+</select>
+<!--根据外键id查询-->
+    <select id="findByIdAll" resultMap="findAll">
+         select * from consultant where consultId=#{consultId};
+    </select>
+
+</mapper>
